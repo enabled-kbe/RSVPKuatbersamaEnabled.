@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ead1a4">
+  <title>Kuat Bersama Enabled - Undangan</title>
+  <meta name="description" content="Undangan Kuat Bersama Enabled, Sabtu 31 Oktober 2026, @RSU Bunda Jakarta Auditorium Lt. 8.">
+  <meta property="og:title" content="Kuat Bersama Enabled">
+  <meta property="og:description" content="Sabtu, 31 Oktober 2026 | 10.00-12.00 WIB | @RSU Bunda Jakarta Auditorium Lt. 8.">
+  <meta property="og:image" content="logo.png">
+  <style>
+    :root {
+      --cream: #ead1a4;
+      --cream-light: #f7ecd6;
+      --cream-dark: #d9bd88;
+      --paper: #fffaf0;
+      --coral: #ff5c5c;
+      --coral-dark: #e84a4a;
+      --brown: #4a3826;
+      --brown-soft: #7a6450;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: var(--cream-light);
+      color: var(--brown);
+      line-height: 1.6;
+      text-align: center;
+      -webkit-text-size-adjust: 100%;
+      overflow-x: hidden;
+    }
+
+    :root { --ease: cubic-bezier(.22, .61, .36, 1); }
+    body:not(.reveal) { overflow: hidden; height: 100svh; }
+
+    /* ===== Tahap 1: amplop (lapisan di atas) ===== */
+    .stage {
+      position: fixed; inset: 0; z-index: 10;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background: radial-gradient(circle at 50% 40%, var(--cream-light), var(--cream));
+      transition: opacity .9s var(--ease), visibility 0s linear .9s;
+    }
+    .envelope-wrap { text-align: center; }
+    .env {
+      position: relative;
+      display: block;
+      width: min(82vw, 320px);
+      aspect-ratio: 3 / 2;
+      margin: 0 auto;
+      border: 0;
+      background: none;
+      cursor: pointer;
+      perspective: 900px;
+      -webkit-tap-highlight-color: transparent;
+      will-change: transform, opacity;
+      transition: transform 1s var(--ease), opacity .9s var(--ease);
+    }
+    .env-back {
+      position: absolute; inset: 0;
+      background:#08043D;
+      border-radius: 8px;
+      box-shadow: 0 10px 24px rgba(74, 56, 38, .18);
+    }
+    .paper {
+      position: absolute;
+      left: 8%; right: 8%; top: 8%; height: 78%;
+      background: var(--paper);
+      border-radius: 6px;
+      z-index: 2;
+      will-change: transform;
+      transition: transform .8s var(--ease) .45s;
+    }
+    .env-front {
+      position: absolute; inset: 0;
+      z-index: 3;
+      background: linear-gradient(160deg, #10075C);
+      clip-path: polygon(0 0, 50% 54%, 100% 0, 100% 100%, 0 100%);
+      border-radius: 8px;
+    }
+    .flap {
+      position: absolute; left: 0; right: 0; top: 0;
+      height: 54%;
+      z-index: 4;
+      background: linear-gradient(180deg, #1B116F);
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      transform-origin: top center;
+      will-change: transform;
+    }
+    .seal {
+      position: absolute;
+      left: 50%; top: 38%;
+      width: 24%;
+      transform: translateX(-50%);
+      z-index: 5;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(74, 56, 38, .3);
+      transition: opacity .25s ease;
+    }
+    .hint {
+      margin-top: 22px;
+      font-size: .95rem;
+      color: var(--brown-soft);
+      letter-spacing: .4px;
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%, 100% { opacity: .45; } 50% { opacity: 1; } }
+    @keyframes flap-open {
+      0%   { transform: rotateX(0);      z-index: 4; animation-timing-function: ease-in; }
+      50%  { transform: rotateX(90deg);  z-index: 4; animation-timing-function: ease-out; }
+      50.1% { transform: rotateX(90deg); z-index: 1; }
+      100% { transform: rotateX(180deg); z-index: 1; }
+    }
+
+    body.open .flap { animation: flap-open .65s linear forwards; }
+    body.open .seal { opacity: 0; }
+    body.open .hint { animation: none; opacity: 0; transition: opacity .25s ease; }
+    body.open .paper { transform: translateY(-36%); }
+    body.reveal .env { transform: translateY(-18px) scale(.97); opacity: 0; }
+    body.reveal .stage { opacity: 0; visibility: hidden; pointer-events: none; }
+
+    /* ===== Tahap 2: isi undangan (sudah ada di bawah amplop) ===== */
+    .page {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 20px 170px;
+      background: linear-gradient(180deg, var(--cream-light), var(--cream));
+    }
+    .card {
+      width: 100%;
+      max-width: 400px;
+      background: var(--paper);
+      border-radius: 20px;
+      padding: 32px 24px 36px;
+      box-shadow: 0 12px 30px rgba(74, 56, 38, .14);
+    }
+    .logo {
+      width: 76px;
+      height: auto;
+      border-radius: 14px;
+      display: block;
+      margin: 0 auto 20px;
+    }
+    h1 {
+      font-size: 1.9rem;
+      line-height: 1.2;
+      font-weight: 800;
+      color: #111;
+      letter-spacing: .2px;
+    }
+    h1 .en { color: #111; }
+    .line {
+      width: 48px; height: 3px;
+      background: var(--cream);
+      border-radius: 2px;
+      margin: 18px auto 20px;
+    }
+    .detail { font-size: 1.02rem; color: var(--brown-soft); }
+    .detail strong { display: block; color: var(--brown); font-size: 1.15rem; }
+    .detail .gap { display: block; height: 12px; }
+    .btn {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 14px 28px;
+      background: var(--coral);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 1rem;
+      box-shadow: 0 6px 14px rgba(255, 92, 92, .35);
+    }
+    .btn:active { background: var(--coral-dark); }
+
+    /* Gambar anak: statis, hanya transisi muncul */
+    .anak {
+      position: absolute;
+      right: 0; bottom: 0;
+      width: min(40vw, 170px);
+      height: auto;
+      pointer-events: none;
+    }
+
+    /* Muncul bertahap (hanya opacity + transform agar halus) */
+    .fade {
+      opacity: 0;
+      transform: translate3d(0, 16px, 0);
+      will-change: opacity, transform;
+    }
+    .anak.fade { transform: none; }
+    body.reveal .fade {
+      opacity: 1;
+      transform: none;
+      transition: opacity .9s var(--ease) var(--d, 0s), transform .9s var(--ease) var(--d, 0s);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition-duration: .01s !important; transition-delay: 0s !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Amplop -->
+  <section class="stage" id="stage">
+    <div class="envelope-wrap">
+      <button class="env" id="env" type="button" aria-label="Buka undangan">
+        <span class="env-back"></span>
+        <span class="paper"></span>
+        <span class="env-front"></span>
+        <span class="flap"></span>
+        <img class="seal" src="logo.png" alt="">
+      </button>
+      <p class="hint">Ketuk untuk membuka undangan</p>
+    </div>
+  </section>
+
+  <!-- Isi undangan -->
+  <main class="page">
+    <div class="card">
+      <img class="logo fade" style="--d:.3s" src="logo.png" alt="Enabled.">
+      <h1 class="fade" style="--d:.45s">Kuat Bersama <span class="en">Enabled</span></h1>
+      <div class="line fade" style="--d:.6s"></div>
+      <p class="detail fade" style="--d:.75s">
+        <strong>Sabtu, 31 Oktober 2026</strong>
+        10.00–12.00 WIB
+        <span class="gap"></span>
+        <strong>@ Auditorium RSU Bunda Jakarta Lt. 8</strong>
+              </p>
+      <div class="fade" style="--d:.9s">
+        <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSf7svTsA8FfgyrR2KfdF99QzSHsSwpz0Kc3orHWeMiwVANeIw/viewform" target="_blank" rel="noopener">klik disini untuk konfirmasi</a>
+      </div>
+    </div>
+    <img class="anak fade" style="--d:1.3s" src="anak.png" alt="">
+  </main>
+
+  <script>
+    (function () {
+      var body = document.body, opened = false;
+      // Siapkan gambar lebih dulu agar tidak patah saat transisi
+      var imgs = ['anak.png', 'logo.png'].map(function (src) {
+        return new Promise(function (res) {
+          var i = new Image(); i.onload = i.onerror = function () { res(); }; i.src = src;
+          if (i.decode) i.decode().then(res, res);
+        });
+      });
+      var ready = Promise.all(imgs);
+
+      function openInvite() {
+        if (opened) return;
+        opened = true;
+        body.classList.add('open');
+        // tunggu tutup amplop terbuka + kertas naik, lalu tampilkan isi
+        Promise.all([ready, new Promise(function (r) { setTimeout(r, 1250); })]).then(function () {
+          requestAnimationFrame(function () {
+            body.classList.add('reveal');
+            window.scrollTo(0, 0);
+          });
+        });
+      }
+      document.getElementById('env').addEventListener('click', openInvite);
+      setTimeout(openInvite, 5000); // terbuka otomatis bila tidak diketuk
+    })();
+  </script>
+</body>
+</html>
